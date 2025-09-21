@@ -39,6 +39,9 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Validate composer.json
+      run: composer validate --no-check-lock
+
     - name: Run tests with coverage
       run: composer test-coverage
 

@@ -4,6 +4,9 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](tests/)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](#testing)
+[![CI](https://github.com/atomic-php/http-kernel/actions/workflows/ci.yml/badge.svg)](https://github.com/atomic-php/http-kernel/actions)
+[![Codecov](https://codecov.io/gh/atomic-php/http-kernel/branch/main/graph/badge.svg)](https://codecov.io/gh/atomic-php/http-kernel)
+[![Packagist](https://img.shields.io/packagist/v/atomic/http-kernel)](https://packagist.org/packages/atomic/http-kernel)
 
 A **blazingly fast**, zero-overhead HTTP kernel for PHP that compiles middleware stacks at boot time for maximum performance. Built with modern PHP features and designed for high-throughput applications.
 
@@ -46,6 +49,12 @@ composer require atomic/http-kernel
 - PHP 8.4 or higher
 - PSR-7 HTTP Message implementation
 - PSR-15 HTTP Server Request Handler interfaces
+
+## PSR Compliance
+
+- PSR-7: HTTP message interfaces
+- PSR-15: HTTP server request handlers and middleware
+- PSR-11: Container interface (optional)
 
 ## Quick Start
 
@@ -329,9 +338,9 @@ composer qa
 
 ### 3. **PSR Compliance**
 
-- PSR-7: HTTP Message interfaces
+- PSR-7: HTTP message interfaces
 - PSR-11: Container interface (optional)
-- PSR-15: HTTP Server Request Handlers
+- PSR-15: HTTP server request handlers
 
 ### 4. **Architectural Clarity**
 
