@@ -72,8 +72,7 @@ class OptimizedMiddlewareHandlerTest extends TestCase
             ->willReturn($response);
 
         // Create a middleware that calls the next handler
-        $middleware = new class implements MiddlewareInterface
-        {
+        $middleware = new class () implements MiddlewareInterface {
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {
                 return $handler->handle($request);
@@ -99,9 +98,10 @@ class OptimizedMiddlewareHandlerTest extends TestCase
             ->willReturn($response);
 
         // Create a middleware that modifies the request
-        $middleware = new class($modifiedRequest) implements MiddlewareInterface
-        {
-            public function __construct(protected ServerRequestInterface $modifiedRequest) {}
+        $middleware = new class ($modifiedRequest) implements MiddlewareInterface {
+            public function __construct(protected ServerRequestInterface $modifiedRequest)
+            {
+            }
 
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {
@@ -125,9 +125,10 @@ class OptimizedMiddlewareHandlerTest extends TestCase
         $next->method('handle')->willReturn($originalResponse);
 
         // Create a middleware that modifies the response
-        $middleware = new class($modifiedResponse) implements MiddlewareInterface
-        {
-            public function __construct(protected ResponseInterface $modifiedResponse) {}
+        $middleware = new class ($modifiedResponse) implements MiddlewareInterface {
+            public function __construct(protected ResponseInterface $modifiedResponse)
+            {
+            }
 
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {
@@ -152,9 +153,10 @@ class OptimizedMiddlewareHandlerTest extends TestCase
         $next->expects($this->never())->method('handle'); // Should never be called
 
         // Create a middleware that short-circuits
-        $middleware = new class($response) implements MiddlewareInterface
-        {
-            public function __construct(protected ResponseInterface $response) {}
+        $middleware = new class ($response) implements MiddlewareInterface {
+            public function __construct(protected ResponseInterface $response)
+            {
+            }
 
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {

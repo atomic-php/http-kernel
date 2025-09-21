@@ -21,7 +21,8 @@ class ArrayContainer implements ContainerInterface
     public function get(string $id): mixed
     {
         if (! $this->has($id)) {
-            throw new class("No entry for {$id}") extends \RuntimeException implements NotFoundExceptionInterface {};
+            throw new class ("No entry for {$id}") extends \RuntimeException implements NotFoundExceptionInterface {
+            };
         }
 
         return $this->entries[$id];

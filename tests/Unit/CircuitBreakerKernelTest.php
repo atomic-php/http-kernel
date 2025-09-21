@@ -17,7 +17,7 @@ class CircuitBreakerKernelTest extends TestCase
     public function test_opens_after_threshold_and_blocks(): void
     {
         $request = $this->createMock(ServerRequestInterface::class);
-        $kernel = new TestKernel;
+        $kernel = new TestKernel();
         $kernel->willThrow(new \RuntimeException('Downstream failure'));
 
         $cb = new CircuitBreakerKernel($kernel, failureThreshold: 2, recoveryTimeout: 60.0);
@@ -49,7 +49,7 @@ class CircuitBreakerKernelTest extends TestCase
     {
         $request = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
-        $kernel = new TestKernel;
+        $kernel = new TestKernel();
 
         $cb = new CircuitBreakerKernel($kernel, failureThreshold: 1, recoveryTimeout: 0.001);
 
@@ -70,7 +70,7 @@ class CircuitBreakerKernelTest extends TestCase
     public function test_probe_failure_reopens_and_blocks(): void
     {
         $request = $this->createMock(ServerRequestInterface::class);
-        $kernel = new TestKernel;
+        $kernel = new TestKernel();
 
         $cb = new CircuitBreakerKernel($kernel, failureThreshold: 1, recoveryTimeout: 0.001);
 

@@ -17,12 +17,13 @@ class PipelineIntegrationTest extends \PHPUnit\Framework\TestCase
 {
     public function test_pipeline_modifies_headers_and_body_end_to_end(): void
     {
-        $psr17 = new Psr17Factory;
+        $psr17 = new Psr17Factory();
         $request = $psr17->createServerRequest('GET', '/hello');
 
-        $finalHandler = new class($psr17) implements RequestHandlerInterface
-        {
-            public function __construct(protected Psr17Factory $f) {}
+        $finalHandler = new class ($psr17) implements RequestHandlerInterface {
+            public function __construct(protected Psr17Factory $f)
+            {
+            }
 
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
@@ -30,8 +31,7 @@ class PipelineIntegrationTest extends \PHPUnit\Framework\TestCase
             }
         };
 
-        $headerMiddleware = new class implements MiddlewareInterface
-        {
+        $headerMiddleware = new class () implements MiddlewareInterface {
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {
                 $response = $handler->handle($request);
@@ -40,18 +40,17 @@ class PipelineIntegrationTest extends \PHPUnit\Framework\TestCase
             }
         };
 
-        $bodyMiddleware = new class implements MiddlewareInterface
-        {
+        $bodyMiddleware = new class () implements MiddlewareInterface {
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {
                 $response = $handler->handle($request);
                 $contents = (string) $response->getBody();
 
-                return $response->withBody((new Psr17Factory)->createStream($contents.'-modified'));
+                return $response->withBody((new Psr17Factory())->createStream($contents.'-modified'));
             }
         };
 
-        $stack = new MiddlewareStack;
+        $stack = new MiddlewareStack();
         $stack->add($headerMiddleware);
         $stack->add($bodyMiddleware);
         $kernel = new Kernel($finalHandler, $stack);
@@ -65,13 +64,14 @@ class PipelineIntegrationTest extends \PHPUnit\Framework\TestCase
 
     public function test_short_circuit_middleware_skips_final_handler(): void
     {
-        $psr17 = new Psr17Factory;
+        $psr17 = new Psr17Factory();
         $request = $psr17->createServerRequest('GET', '/short');
 
         $finalHandlerCalled = false;
-        $finalHandler = new class($finalHandlerCalled) implements RequestHandlerInterface
-        {
-            public function __construct(protected bool &$called) {}
+        $finalHandler = new class ($finalHandlerCalled) implements RequestHandlerInterface {
+            public function __construct(protected bool &$called)
+            {
+            }
 
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
@@ -81,15 +81,14 @@ class PipelineIntegrationTest extends \PHPUnit\Framework\TestCase
             }
         };
 
-        $shortCircuit = new class implements MiddlewareInterface
-        {
+        $shortCircuit = new class () implements MiddlewareInterface {
             public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
             {
                 return new Response(418, ['X-Short' => 'true'], 'teapot');
             }
         };
 
-        $stack = new MiddlewareStack;
+        $stack = new MiddlewareStack();
         $stack->add($shortCircuit);
         $kernel = new Kernel($finalHandler, $stack);
 

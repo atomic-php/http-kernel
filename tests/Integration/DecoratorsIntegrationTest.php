@@ -18,18 +18,17 @@ class DecoratorsIntegrationTest extends \PHPUnit\Framework\TestCase
 {
     public function test_performance_kernel_reports_metrics_e2e(): void
     {
-        $psr17 = new Psr17Factory;
+        $psr17 = new Psr17Factory();
         $request = $psr17->createServerRequest('GET', '/metrics');
 
-        $final = new class implements RequestHandlerInterface
-        {
+        $final = new class () implements RequestHandlerInterface {
             public function handle(ServerRequestInterface $request): ResponseInterface
             {
                 return new Response(201);
             }
         };
 
-        $stack = new MiddlewareStack;
+        $stack = new MiddlewareStack();
         $kernel = new Kernel($final, $stack);
 
         $captured = null;
@@ -47,11 +46,10 @@ class DecoratorsIntegrationTest extends \PHPUnit\Framework\TestCase
 
     public function test_circuit_breaker_blocks_then_allows_probe_then_closes(): void
     {
-        $psr17 = new Psr17Factory;
+        $psr17 = new Psr17Factory();
         $request = $psr17->createServerRequest('GET', '/cb');
 
-        $final = new class implements RequestHandlerInterface
-        {
+        $final = new class () implements RequestHandlerInterface {
             public int $calls = 0;
 
             public function handle(ServerRequestInterface $request): ResponseInterface
@@ -65,7 +63,7 @@ class DecoratorsIntegrationTest extends \PHPUnit\Framework\TestCase
             }
         };
 
-        $stack = new MiddlewareStack;
+        $stack = new MiddlewareStack();
         $kernel = new Kernel($final, $stack);
         $cb = new CircuitBreakerKernel($kernel, failureThreshold: 1, recoveryTimeout: 0.001);
 
