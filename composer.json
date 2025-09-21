@@ -2,7 +2,7 @@
     "name": "atomic/http-kernel",
     "description": "Lightning-fast, ultra-slim PHP HTTP kernel with zero bloat and maximum performance",
     "type": "library",
-    "homepage": "https://github.com/atomic/http-kernel",
+    "homepage": "https://github.com/atomic-php/http-kernel",
     "readme": "README.md",
     "license": "MIT",
     "authors": [
@@ -13,8 +13,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/atomic/http-kernel/issues",
-        "source": "https://github.com/atomic/http-kernel"
+        "issues": "https://github.com/atomic-php/http-kernel/issues",
+        "source": "https://github.com/atomic-php/http-kernel"
     },
     "keywords": [
         "http",

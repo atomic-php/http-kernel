@@ -347,7 +347,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 
 ```bash
 # Clone repository
-git clone https://github.com/atomic/http-kernel.git
+git clone https://github.com/atomic-php/http-kernel.git
 cd http-kernel
 
 # Install dependencies
