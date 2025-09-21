@@ -1,0 +1,75 @@
+# Composer
+/vendor/
+composer.phar
+composer.lock
+
+# PHPUnit
+/.phpunit.cache
+/phpunit.xml
+phpunit.xml.bak
+.phpunit.result.cache
+
+# Coverage reports
+/coverage/
+/coverage.xml
+/clover.xml
+/junit.xml
+
+# Static analysis
+/.psalm/
+psalm.xml.bak
+.psalm.baseline.xml
+
+# IDE and editor files
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS generated files
+*.tmp
+*.temp
+.AppleDouble
+.LSOverride
+Icon?
+ehthumbs.db
+
+# Build artifacts
+/build/
+/dist/
+*.phar
+
+# Logs
+*.log
+/logs/
+
+# Cache
+/.cache/
+/tmp/
+.env
+.env.local
+.env.*.local
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Documentation build
+/docs/build/
+/.phpdoc/
+
+# Benchmark results
+/benchmark-results/
+*.benchmark
+
+# Package distribution
+*.tar.gz
+*.zip
+/releases/
+
+# PHP-CS-Fixer cache
+.php-cs-fixer.cache

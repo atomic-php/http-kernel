@@ -1,0 +1,7 @@
+# Code owners for this repository
+
+*             @atomic @Thavarshan
+/.github      @atomic @Thavarshan
+/src          @atomic @Thavarshan
+/tests        @atomic @Thavarshan
+/benchmarks   @atomic @Thavarshan

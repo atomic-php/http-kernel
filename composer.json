@@ -1,0 +1,85 @@
+{
+    "name": "atomic/http-kernel",
+    "description": "Lightning-fast, ultra-slim PHP HTTP kernel with zero bloat and maximum performance",
+    "type": "library",
+    "homepage": "https://github.com/atomic/http-kernel",
+    "readme": "README.md",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thavarshan",
+            "email": "tjthavarshan@gmail.com",
+            "role": "Author"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/atomic/http-kernel/issues",
+        "source": "https://github.com/atomic/http-kernel"
+    },
+    "keywords": [
+        "http",
+        "kernel",
+        "middleware",
+        "psr-7",
+        "psr-15",
+        "psr-11",
+        "performance",
+        "php",
+        "fast",
+        "zero-overhead",
+        "compile-time",
+        "optimization"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Atomic\\Http\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/",
+            "Benchmarks\\": "benchmarks/"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "psr/http-message": "^1.0|^2.0",
+        "psr/http-server-handler": "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "psr/container": "^1.0|^2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "laminas/laminas-diactoros": "^3.0",
+        "mockery/mockery": "^1.6",
+        "nyholm/psr7": "^1.5",
+        "phpunit/phpunit": "^10.0",
+        "vimeo/psalm": "^6.11"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover=coverage.xml",
+        "psalm": "psalm",
+        "cs-check": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "benchmark": "php benchmarks/run-benchmarks.php",
+        "benchmark-kernel": "php benchmarks/run-benchmarks.php --filter=Kernel",
+        "benchmark-middleware": "php benchmarks/run-benchmarks.php --filter=Middleware",
+        "qa": [
+            "@psalm",
+            "@cs-check",
+            "@test"
+        ],
+        "analyze": [
+            "@psalm",
+            "@cs-check"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "classmap-authoritative": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
