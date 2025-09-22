@@ -53,6 +53,6 @@ jobs:
 
     - name: Upload coverage
       if: matrix.php-version == '8.4' && hashFiles('coverage.xml') != ''
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         files: coverage.xml
