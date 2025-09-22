@@ -312,13 +312,13 @@ composer qa
 
 ## Performance Comparison
 
-| Framework/Library   | Operations/sec    | Notes                    |
-| ------------------- | ----------------- | ------------------------ |
+| Framework/Library      | Operations/sec    | Notes                    |
+| ---------------------- | ----------------- | ------------------------ |
 | **Atomic HTTP Kernel** | **3,000,000+**    | With middleware pipeline |
-| ReactPHP            | 500,000-1,000,000 | Async HTTP server        |
-| FastRoute           | 100,000-500,000   | URL routing only         |
-| Symfony             | 1,000-5,000       | Full-stack framework     |
-| Laravel             | 500-2,000         | Full-stack framework     |
+| ReactPHP               | 500,000-1,000,000 | Async HTTP server        |
+| FastRoute              | 100,000-500,000   | URL routing only         |
+| Symfony                | 1,000-5,000       | Full-stack framework     |
+| Laravel                | 500-2,000         | Full-stack framework     |
 
 *Note: Benchmarks are approximate and depend on hardware, middleware complexity, and application logic. Atomic HTTP Kernel measurements represent operations per second for request handling, not full HTTP requests per second.*
 
