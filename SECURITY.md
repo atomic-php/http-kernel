@@ -9,7 +9,7 @@ We aim to support the latest minor release on the current major.
 
 ## Reporting a Vulnerability
 
-Please email security reports to tjthavarshan@gmail.com. Include:
+Please email security reports to <tjthavarshan@gmail.com>. Include:
 
 - A detailed description of the issue
 - Steps to reproduce or a PoC
